@@ -13,8 +13,29 @@ public class Game
     {
     }
 
-    public Game Play(string input)
+    public virtual Game Play(string input)
     {
-        return new Game(2);
+        if (input == "1")
+        {
+            return new Game(2);
+        }
+        else
+        {
+            return new EndedGame(this);
+        }
     }
 }
+
+public class EndedGame : Game
+{
+    public EndedGame(Game g) : base(g.Turn)
+    {
+        
+    }
+
+    public override Game Play(string input)
+    {
+        throw new InvalidOperationException("Game has ended, cannot play anymore");
+    }
+}
+
