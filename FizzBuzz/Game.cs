@@ -15,9 +15,9 @@ public class Game
 
     public virtual Game Play(string input)
     {
-        if (input == "1")
+        if (int.TryParse(input, out int parsed))
         {
-            return Continue();
+            return parsed == Turn ? Continue() : End();
         }
         else
         {
@@ -30,9 +30,9 @@ public class Game
         return new EndedGame(this);
     }
 
-    private static Game Continue()
+    private Game Continue()
     {
-        return new Game(2);
+        return new Game(Turn + 1);
     }
 }
 
