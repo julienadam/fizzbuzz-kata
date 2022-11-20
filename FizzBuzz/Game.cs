@@ -19,6 +19,10 @@ public class Game
         {
             return parsed == Turn ? Continue() : End();
         }
+        else if(input == "Fizz")
+        {
+            return Turn % 3 == 0 ? Continue() : End();
+        }
         else
         {
             return End();
