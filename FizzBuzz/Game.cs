@@ -17,7 +17,17 @@ public class Game
     {
         if (Turn % 3 == 0)
         {
+            if (Turn % 5 == 0)
+            {
+                return input == "FizzBuzz" ? Continue() : End();
+            }
+
             return input == "Fizz" ? Continue() : End();
+        }
+
+        if (Turn % 5 == 0)
+        {
+            return input == "Buzz" ? Continue() : End();
         }
 
         if (int.TryParse(input, out var parsed))
