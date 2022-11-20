@@ -15,18 +15,17 @@ public class Game
 
     public virtual Game Play(string input)
     {
-        if (int.TryParse(input, out int parsed))
+        if (Turn % 3 == 0)
+        {
+            return input == "Fizz" ? Continue() : End();
+        }
+
+        if (int.TryParse(input, out var parsed))
         {
             return parsed == Turn ? Continue() : End();
         }
-        else if(input == "Fizz")
-        {
-            return Turn % 3 == 0 ? Continue() : End();
-        }
-        else
-        {
-            return End();
-        }
+
+        return End();
     }
 
     private EndedGame End()
