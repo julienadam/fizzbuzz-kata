@@ -1,4 +1,4 @@
-namespace FizzBuzz.Tests;
+namespace FizzBuzz;
 
 public class Game
 {
@@ -17,12 +17,22 @@ public class Game
     {
         if (input == "1")
         {
-            return new Game(2);
+            return Continue();
         }
         else
         {
-            return new EndedGame(this);
+            return End();
         }
+    }
+
+    private EndedGame End()
+    {
+        return new EndedGame(this);
+    }
+
+    private static Game Continue()
+    {
+        return new Game(2);
     }
 }
 
